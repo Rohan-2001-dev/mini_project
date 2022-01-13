@@ -1,0 +1,70 @@
+from tkinter import *
+from datetime import datetime
+top=Tk()
+top.minsize(width=400,height=100)
+top.title("Typing Speed")
+label=Label(top,text="Check your typing speed here......")
+label.pack()
+enter=Entry(top)
+enter.pack()
+label2=Label(top,text="WELCOME!!",fg="black",font="verdana 20 bold")
+label2.pack()
+label3=Label(top)
+label3.pack(side=BOTTOM)
+
+frame=Frame(top)
+count=66600
+running=False
+def sec():
+    
+    if running:
+        global count
+        if count==66600:
+            display="starting..."
+        else:
+            ss=datetime.fromtimestamp(count)
+            display=ss.strftime("%H:%M:%S")
+        label2.after(1000,sec)
+        count+=1
+        label2.config(text=display)
+
+def call_sec():
+    sec()
+    
+def star():
+    global running
+    running=True
+    call_sec()
+    start['state']='disabled'
+    stop['state']='normal'
+    
+def count_words():
+    i=enter.get()
+    j=i.split(' ')
+    i="you have typed "+str(len(j))+" letters in "+str(count-1-66600)+" sec"
+    label3.config(text=i)
+def stop():
+    global running
+    running=False
+    stop['state']='disabled'
+    start['state']='normal'
+    reset['state']='normal'
+    count_words()
+def reset():
+    global count
+    count=66600
+    reset['state']='disabled'
+    enter.delete(0,'end')
+    label2.config(text="restarting...")
+    
+    
+frame.pack(anchor="center")
+start=Button(frame,text='start',fg="green",bg="white",command=star)
+start.pack(side=LEFT)
+stop=Button(frame,text="stop",fg="red",bg="white",state='disabled',command=stop)
+stop.pack(side=LEFT)
+reset=Button(frame,text="recheck",state='disabled',bg="white",fg="yellow",command=reset)
+reset.pack()
+
+
+top.mainloop()
