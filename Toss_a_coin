@@ -1,0 +1,16 @@
+from tkinter import *
+import random
+i=['heads','tales']
+top=Tk()
+top.minsize(width=300,height=100)
+top.title("Toss a coin")
+label=Label(top,text="click on toss button to see its head or tale")
+label.place(x=10,y=10)
+def coin():
+    j=random.choice(i)
+    k="coin is tossed and it's a "+j
+    label.config(text=k)
+bt=Button(top,text="toss",command=coin)
+bt.place(x=30,y=40)
+top.mainloop()
+
