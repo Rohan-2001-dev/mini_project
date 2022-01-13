@@ -1,0 +1,27 @@
+# importing the pyttsx library
+from pyttsx3 import *
+from tkinter import *
+top=Tk()
+top.title("Text-To-Speech")
+label=Label(top,text="type here and then listen it!! ",fg='green',bg='white')
+label.place(x=0,y=0)
+
+enter=Entry(top)
+enter.place(x=50,y=50)
+def button():
+    global i
+    i=enter.get()
+    engine.say(i)
+    engine.runAndWait()
+   
+
+   # engine
+    
+
+# initialisation
+engine = init()
+
+button=Button(top,text="listen",fg='black',activebackground='pink',command=button)
+button.place(x=135,y=70)
+
+top.mainloop()
