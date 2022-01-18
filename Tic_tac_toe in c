@@ -1,0 +1,131 @@
+#include <stdio.h>
+
+int main()
+{
+    char c='o',b='x',a[3][3];
+    int k,l,visit[3][3],i,j,m,flag=1;
+    printf("Welcome in the play of \n!!!Tic Tac Toe!!!");
+    printf("This is a multiplayer game ....");
+    printf("\nplayer1= 'O' and player2= 'X' \n");
+    for(k=0;k<3;k++){
+        for(l=0;l<3;l++){
+            visit[k][l]=0;
+            a[k][l]=(k*2)+l+'0';
+        }
+    }
+    for(k=0;k<9;){
+        flag=1;
+        if(k%2==0){
+        printf("player 1 enter the row and column: ");
+        scanf("%d %d",&i,&j);
+        }
+        else{
+           printf("player 2 enter the row and column: ");
+           scanf("%d %d",&i,&j);  
+        }
+         if(visit[i][j]==0){
+            visit[i][j]=1;
+            if(k%2==0){
+                a[i][j]=c;
+               // printf("i=%d and j=%d and a[i][j]=%c\n",i,j,a[i][j]);
+            }
+            else{
+                a[i][j]=b;
+               // printf("i=%d and j=%d and a[i][j]=%c \n",i,j,a[i][j]);
+
+            }
+            
+        }
+        else{
+            printf("That place is already occupied by %c \n",a[i][j]);
+            continue;
+        }
+        
+        if(k>=4){
+            if(a[0][0]== a[1][1]&&a[1][1]==a[2][2]){
+                if(a[0][0]==c)
+                  printf("player 1 won the round /-/-/-/---  ");
+                else
+                  printf("player 2 won the round /-/-/-/--- ");
+                break;
+                    }
+            else if(a[0][0]==a[1][0] && a[1][0]==a[2][0]){
+                if(a[0][0]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/---");
+                break;
+            }
+             else if(a[0][0]==a[0][1] && a[0][1]==a[0][2]){
+                if(a[0][0]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/--- ");
+                break;
+            }
+             else if(a[1][0]==a[1][1] && a[1][1]==a[1][2]){
+                if(a[1][0]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/--- ");
+                  break;
+
+            }
+             else if(a[2][0]==a[2][1] && a[2][1]==a[2][2]){
+                if(a[2][0]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/--- ");
+                break;
+
+            }
+             else if((a[0][1]==a[1][1]) && (a[1][1]==a[2][1])){
+                if(a[1][1]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/---" );
+                break;
+
+            }
+             else if(a[0][2]==a[1][2] && a[1][2]==a[2][2]){
+                if(a[1][2]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/--- ");
+                break;
+
+            }
+             else if(a[2][0]==a[1][1] && a[1][1]==a[0][2]){
+                if(a[2][0]==c)
+                  printf("player 1 won the round /-/-/-/--- ");
+                else
+                  printf("player 2 won the round /-/-/-/---");
+                  break;
+
+            }
+            else
+               flag=0;
+            
+                
+        }
+    
+   
+   for(m=0;m<3;m++){
+        for(l=0;l<3;l++)
+          printf("%c ",a[m][l]);
+        printf("\n");
+    }
+    k++;
+    
+}
+if(flag==0)
+  printf("Match Draw //////\n");
+else
+  printf("\n");
+for(m=0;m<3;m++){
+    for(l=0;l<3;l++)
+        printf("%c ",a[m][l]);
+        printf("\n");
+    }
+    
+}
