@@ -1,0 +1,28 @@
+import random
+f=open('names.txt','r')
+s=random.choice(f.readlines())
+s=s.lower()
+j=s
+print('the length of letter is %d'%len(s))
+print(len(s)*'_ ')
+count=5
+ans='*'*len(s)
+true=False
+while(count>0):
+    if('*' not in ans):
+        print("you won the game")
+        true=True 
+        break
+    guess=input()
+    if guess in s:
+        find=s.find(guess,0,len(s))
+        s=s.replace(guess,'*',1)
+        ans=ans[:find]+guess+ans[find+1:]
+        print(ans,find)
+        
+    else:
+        count=count-1
+        print("you have only left {0} chances".format(count))
+if(not true):
+    print("you lost the match")
+    print("the word was %s"%j)
